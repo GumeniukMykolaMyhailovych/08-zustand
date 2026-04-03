@@ -1,8 +1,4 @@
-import "./globals.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import './globals.css';
+import Providers from "@/components/Providers";
 
 export default function RootLayout({
   children,
@@ -12,11 +8,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TanStackProvider>
-          <Header />
-          {children}
-          <Footer />
-        </TanStackProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

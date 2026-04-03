@@ -11,7 +11,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import Modal from "@/components/Modal/Modal";
 
-export default function NotesClient() {
+export default function NotesClient({ tag = "all" }: { tag?: string }) {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -27,8 +27,9 @@ export default function NotesClient() {
   }, [search]);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["notes", page, debouncedSearch],
-    queryFn: () => fetchNotes(page, debouncedSearch),
+    queryKey: ["notes", page, debouncedSearch, tag],
+    queryFn: () =>
+      fetchNotes(page, debouncedSearch, tag !== "all" ? tag : undefined),
     placeholderData: (prev) => prev,
   });
 

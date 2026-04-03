@@ -1,0 +1,23 @@
+.menuList {
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+}
+
+.menuItem {
+  margin-bottom: 8px;
+}
+
+.menuLink {
+  display: block;
+  padding: 10px 12px;
+  color: #ffffff;
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.menuLink:hover {
+  background-color: #555;
+}
