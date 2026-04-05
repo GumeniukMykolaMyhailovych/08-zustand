@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { fetchNotes } from "@/lib/api";
 import styles from "../../styles/NotesPage.module.css";
 
@@ -13,25 +13,14 @@ import Modal from "@/components/Modal/Modal";
 
 export default function NotesClient({ tag = "all" }: { tag?: string }) {
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setDebouncedSearch(search);
-  //     setPage(1);
-  //   }, 500);
-
-  //   return () => clearTimeout(timer);
-  // }, [search]);
 
   const normalizedTag = tag === "all" ? undefined : tag;
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["notes", page, normalizedTag ?? "all"],
-    queryFn: () =>
-  fetchNotes(page, normalizedTag),
+    queryKey: ["notes", page, normalizedTag],
+    queryFn: () => fetchNotes(page, normalizedTag),
     placeholderData: (prev) => prev,
   });
 
@@ -46,7 +35,6 @@ export default function NotesClient({ tag = "all" }: { tag?: string }) {
   return (
     <>
       <h1>Notes</h1>
-
 
       <div className={styles.toolbar}>
         <SearchBox onChange={setSearch} />

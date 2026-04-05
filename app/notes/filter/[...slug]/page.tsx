@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import FilteredNotes from "./Notes.client";
 
-export default function Page() {
-  redirect("/notes/filter/all");
+export default function Page({
+  params,
+}: {
+  params: { slug?: string[] };
+}) {
+  return <FilteredNotes params={params} />;
 }
