@@ -1,15 +1,28 @@
-import React from "react";
-export default function Layout({
+import "./globals.css";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import { ReactNode } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+export default function RootLayout({
   children,
-  sidebar,
+  modal,
 }: {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
+  children: ReactNode;
+  modal: ReactNode;
 }) {
+  const queryClient = new QueryClient();
+
   return (
-    <div style={{ display: "flex", gap: 20 }}>
-      <aside>{sidebar}</aside>
-      <main>{children}</main>
-    </div>
+    <html lang="en">
+      <body>
+        <QueryClientProvider client={queryClient}>
+          <Header />
+          {children}
+          {modal}
+          <Footer />
+        </QueryClientProvider>
+      </body>
+    </html>
   );
 }

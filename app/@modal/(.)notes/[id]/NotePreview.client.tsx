@@ -14,14 +14,20 @@ export default function NotePreview({ id }: { id: string }) {
     refetchOnMount: false,
   });
 
-  if (isLoading) return <Modal onClose={() => router.back()}>Loading...</Modal>;
-  if (error instanceof Error) return <Modal onClose={() => router.back()}>{error.message}</Modal>;
+  if (isLoading)
+    return <Modal onClose={() => router.back()}>Loading...</Modal>;
+
+  if (error instanceof Error)
+    return <Modal onClose={() => router.back()}>{error.message}</Modal>;
+
+  if (!data) return null;
 
   return (
     <Modal onClose={() => router.back()}>
-      <h2>{data?.title}</h2>
-      <p>{data?.content}</p>
-      <p>{data?.tag}</p>
+      <h2>{data.title}</h2>
+      <p>{data.content}</p>
+      <p>{data.tag}</p>
+      <p>{new Date(data.createdAt).toLocaleString()}</p>
     </Modal>
   );
 }

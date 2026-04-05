@@ -4,7 +4,14 @@ export default function Header() {
   return (
     <header>
       <nav>
-        <Link href="/notes/filter/all">Notes</Link>
+        <ul>
+          <li>
+            <Link href="/">Home</Link> {/* 👈 ДОДАТИ */}
+          </li>
+          <li>
+            <Link href="/notes/filter/all">Notes</Link>
+          </li>
+        </ul>
       </nav>
     </header>
   );
