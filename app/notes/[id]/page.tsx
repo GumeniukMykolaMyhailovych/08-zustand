@@ -21,9 +21,8 @@ export default async function NoteDetailsPage({ params }: Props) {
   );
 }
 
-import { fetchNoteById } from "@/lib/api";
-
-export async function generateMetadata({ params }: any) {
+// ✅ БЕЗ any
+export async function generateMetadata({ params }: Props) {
   const note = await fetchNoteById(params.id);
 
   return {

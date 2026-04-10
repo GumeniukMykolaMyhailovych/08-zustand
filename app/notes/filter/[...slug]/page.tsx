@@ -6,12 +6,14 @@ import {
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug?: string[] }>;
-}) {
-  const { slug } = await params;
+type Props = {
+  params: {
+    slug?: string[];
+  };
+};
+
+export default async function Page({ params }: Props) {
+  const slug = params.slug;
 
   const tag = slug?.[0] ?? "all";
   const normalizedTag = tag === "all" ? undefined : tag;
@@ -30,7 +32,8 @@ export default async function Page({
   );
 }
 
-export async function generateMetadata({ params }: any) {
+// ✅ БЕЗ any
+export async function generateMetadata({ params }: Props) {
   const tag = params.slug?.[0] || "All";
 
   return {
