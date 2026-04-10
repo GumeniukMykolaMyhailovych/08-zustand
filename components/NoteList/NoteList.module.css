@@ -19,6 +19,12 @@
   min-height: 180px;
 }
 
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .title {
   font-size: 18px;
   font-weight: 600;
@@ -39,7 +45,6 @@
 }
 
 .button {
-  align-self: flex-end;
   padding: 6px 12px;
   font-size: 14px;
   color: #fff;
@@ -48,6 +53,12 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  box-sizing: border-box;
 }
 
 .button:hover {
@@ -76,7 +87,6 @@
 }
 
 .link {
-  align-self: flex-end;
   padding: 6px 12px;
   font-size: 14px;
   color: #fff;
@@ -85,10 +95,21 @@
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
   transition: background-color 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  line-height: 1;
+  box-sizing: border-box;
 }
 
 .link:hover {
   background-color: #0b5ed7;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
 }
