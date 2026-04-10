@@ -29,3 +29,22 @@ export default async function Page({
     </HydrationBoundary>
   );
 }
+
+export async function generateMetadata({ params }: any) {
+  const tag = params.slug?.[0] || "All";
+
+  return {
+    title: `Notes - ${tag}`,
+    description: `Viewing notes filtered by ${tag}`,
+    openGraph: {
+      title: `Notes - ${tag}`,
+      description: `Viewing notes filtered by ${tag}`,
+      url: `https://notehub.com/notes/filter/${tag}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        },
+      ],
+    },
+  };
+}

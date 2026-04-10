@@ -20,3 +20,24 @@ export default async function NoteDetailsPage({ params }: Props) {
     </div>
   );
 }
+
+import { fetchNoteById } from "@/lib/api";
+
+export async function generateMetadata({ params }: any) {
+  const note = await fetchNoteById(params.id);
+
+  return {
+    title: note.title,
+    description: note.content,
+    openGraph: {
+      title: note.title,
+      description: note.content,
+      url: `https://notehub.com/notes/${params.id}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        },
+      ],
+    },
+  };
+}

@@ -6,3 +6,18 @@ export default function NotFound() {
     </>
   );
 }
+
+export const metadata = {
+  title: "Page not found",
+  description: "This page does not exist",
+  openGraph: {
+    title: "Page not found",
+    description: "This page does not exist",
+    url: "https://notehub.com/not-found",
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+      },
+    ],
+  },
+};
