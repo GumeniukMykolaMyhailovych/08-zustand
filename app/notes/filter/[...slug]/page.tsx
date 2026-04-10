@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
+import type { Metadata } from "next"; // 🔥 ДОДАЛИ
 
 type Props = {
   params: {
@@ -32,8 +33,8 @@ export default async function Page({ params }: Props) {
   );
 }
 
-// ✅ БЕЗ any
-export async function generateMetadata({ params }: Props) {
+// 🔥 ТИП ПОВЕРНЕННЯ ДОДАЛИ
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tag = params.slug?.[0] || "All";
 
   return {

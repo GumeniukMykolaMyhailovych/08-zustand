@@ -1,13 +1,6 @@
-export default function NotFound() {
-  return (
-    <>
-      <h1>404 - Page not found</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
-    </>
-  );
-}
+import type { Metadata } from "next"; 
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Page not found",
   description: "This page does not exist",
   openGraph: {
@@ -21,3 +14,12 @@ export const metadata = {
     ],
   },
 };
+
+export default function NotFound() {
+  return (
+    <>
+      <h1>404 - Page not found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+    </>
+  );
+}

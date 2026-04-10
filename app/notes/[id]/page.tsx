@@ -1,4 +1,5 @@
 import { fetchNoteById } from "@/lib/api";
+import type { Metadata } from "next"; // 🔥 ДОДАЛИ
 
 type Props = {
   params: {
@@ -21,8 +22,8 @@ export default async function NoteDetailsPage({ params }: Props) {
   );
 }
 
-// ✅ БЕЗ any
-export async function generateMetadata({ params }: Props) {
+// 🔥 ДОДАЛИ ТИП ПОВЕРНЕННЯ
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = await fetchNoteById(params.id);
 
   return {

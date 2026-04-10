@@ -42,13 +42,15 @@ export default function NotesClient({ tag }: { tag: string }) {
       <div className={styles.toolbar}>
         <SearchBox onChange={setSearch} />
 
-        {/* 🔥 ОЦЕ ГОЛОВНА ЗМІНА */}
         <Link href="/notes/action/create">
           <button>Add note</button>
         </Link>
       </div>
 
-      <NoteList notes={data?.notes || []} />
+      {/* 🔥 ВИПРАВЛЕННЯ ТУТ */}
+      {data?.notes && data.notes.length > 0 && (
+        <NoteList notes={data.notes} />
+      )}
 
       <Pagination
         page={page}
